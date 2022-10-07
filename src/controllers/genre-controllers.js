@@ -1,18 +1,8 @@
 const genreServices = require('../services/genre-services');
 
-const create = async (req, res, next) => {
-  const { name, imageUrl } = req.body;
+const getGenresList = async (req, res, next) => {
   try {
-    const newGenre = await genreServices.create({ name, imageUrl });
-    res.status(201).json(newGenre);
-  } catch (error) {
-    next(error);
-  }
-};
-
-const getAll = async (req, res, next) => {
-  try {
-    const genres = await genreServices.getAll();
+    const genres = await genreServices.getGenresList();
     res.status(200).json(genres);
   } catch (error) {
     next(error);
@@ -20,6 +10,5 @@ const getAll = async (req, res, next) => {
 };
 
 module.exports = {
-  create,
-  getAll,
+  getGenresList,
 };

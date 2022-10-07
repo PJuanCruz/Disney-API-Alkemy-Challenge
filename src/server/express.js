@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const authRouter = require('../routes/auth-router');
-const authenticateToken = require('../middlewares/authenticate-token');
+// const authenticateToken = require('../middlewares/authenticate-token');
 const genreRouter = require('../routes/genre-router');
 const movieRouter = require('../routes/movie-router');
 const characterRouter = require('../routes/character-router');
@@ -14,7 +14,6 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 app.use(express.json());
 
 app.use('/auth', authRouter);
-app.use(authenticateToken);
 app.use('/genres', genreRouter);
 app.use('/movies', movieRouter);
 app.use('/characters', characterRouter);
