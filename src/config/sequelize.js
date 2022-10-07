@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   development: {
     username: process.env.DB_USERNAME,
@@ -7,7 +9,7 @@ module.exports = {
     dialect: process.env.DB_DIALECT,
     logging: false,
     define: {
-      timestamps: true,
+      timestamps: false,
       underscored: true,
     },
   },
@@ -16,7 +18,7 @@ module.exports = {
     dialect: process.env.DB_DIALECT,
     logging: false,
     define: {
-      timestamps: true,
+      timestamps: false,
       underscored: true,
     },
     dialectOptions: {
