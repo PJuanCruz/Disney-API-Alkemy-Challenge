@@ -1,3 +1,7 @@
+## [View Documentation](https://documenter.getpostman.com/view/23055576/2s83ziQ54k)
+
+------------
+
 # CHALLENGE BACKEND - NodeJs - alkemy 🚀
 
 ### Objetivo
@@ -6,10 +10,10 @@ Desarrollar una API para explorar el mundo de Disney, la cual permitirá conocer
 personajes que lo componen y entender en qué películas estos participaron. Por otro lado, deberá
 exponer la información para que cualquier frontend pueda consumirla.
 
-👉 Utilizar NodeJs y Express.
-👉 No es necesario armar el Frontend.
-👉 Las rutas deberán seguir el patrón REST.
-👉 Utilizar la librería Sequelize.
+- 👉 Utilizar NodeJs y Express.
+- 👉 No es necesario armar el Frontend.
+- 👉 Las rutas deberán seguir el patrón REST.
+- 👉 Utilizar la librería Sequelize.
 
 ⚠️ ¡No es indispensable hacer todo!
 Mientras más completes, mayor puntaje obtendrás, pero puedes enviar la app hasta el estadío que la
@@ -20,20 +24,20 @@ de conocimiento actual.
 
 #### 1. Modelado de Base de Datos
 
-- Personaje: deberá tener,
+- *Personaje: deberá tener,*
  - Imagen.
  - Nombre.
  - Edad.
  - Peso.
  - Historia.
  - Películas o series asociadas.
-- Película o Serie: deberá tener,
+- *Película o Serie: deberá tener,*
  - Imagen.
  - Título.
  - Fecha de creación.
  - Calificación (del 1 al 5).
  - Personajes asociados.
-- Género: deberá tener,
+- *Género: deberá tener,*
  - Nombre.
  - Imagen.
  - Películas o series asociadas.

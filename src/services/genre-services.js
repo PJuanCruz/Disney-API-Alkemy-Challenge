@@ -5,6 +5,12 @@ const getGenresList = async () => {
   return genres;
 };
 
+const getGenreById = async (genreId) => {
+  const genre = await Genre.findByPk(genreId);
+  return genre;
+};
+
 module.exports = {
   getGenresList,
+  getGenreById,
 };

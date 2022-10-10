@@ -1,3 +1,4 @@
+const BadRequest = require('../errors/bad-request');
 const Unauthorized = require('../errors/unauthorized');
 const userServices = require('../services/user-services');
 const comparePassword = require('../utils/compare-password');
@@ -24,6 +25,9 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   const { email, password } = req.body;
   try {
+    if (!email || !password) {
+      throw new BadRequest('El email y la contraseña son requeridos');
+    }
     const user = await userServices.getUserByEmail(email);
     if (!user) throw new Unauthorized('Email o contraseña incorrectos');
     const match = comparePassword(password, user.password);

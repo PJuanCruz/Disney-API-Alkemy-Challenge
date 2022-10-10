@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const authRouter = require('../routes/auth-router');
-// const authenticateToken = require('../middlewares/authenticate-token');
 const genreRouter = require('../routes/genre-router');
 const movieRouter = require('../routes/movie-router');
 const characterRouter = require('../routes/character-router');

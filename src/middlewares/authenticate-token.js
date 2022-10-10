@@ -9,12 +9,13 @@ const authenticateToken = async (req, res, next) => {
       throw new Unauthorized();
     }
     const token = authHeader.split(' ')[1];
-    const decode = jwt.verify(token, process.env.JWT_SECRET);
-    if (!decode) {
+    try {
+      const decode = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = { userId: decode.userId, email: decode.email };
+      next();
+    } catch (error) {
       throw new Forbidden();
     }
-    req.user = { userId: decode.userId, email: decode.email };
-    next();
   } catch (error) {
     next(error);
   }

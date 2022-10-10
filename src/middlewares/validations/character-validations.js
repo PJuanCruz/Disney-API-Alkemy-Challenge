@@ -1,9 +1,42 @@
-const { param } = require('express-validator');
+const {
+  isImageUrlValid,
+  isNameValid,
+  isAgeValid,
+  isWeightValid,
+  isStoryValid,
+  isMoviesIdValid,
+  isCharacterIdValid,
+} = require('../../utils/validations');
+const validationHandler = require('../validation-handler');
 
-const isCharacterIdValid = param('characterId')
-  .isInt({ min: 1 })
-  .withMessage('Formato de ID inválido');
+const getCharactersValidations = [isCharacterIdValid, validationHandler];
+
+const deleteCharactersValidations = [isCharacterIdValid, validationHandler];
+
+const postCharactersValidations = [
+  isImageUrlValid,
+  isNameValid,
+  isAgeValid,
+  isWeightValid,
+  isStoryValid,
+  isMoviesIdValid,
+  validationHandler,
+];
+
+const putCharactersValidations = [
+  isCharacterIdValid,
+  isImageUrlValid,
+  isNameValid,
+  isAgeValid,
+  isWeightValid,
+  isStoryValid,
+  isMoviesIdValid,
+  validationHandler,
+];
 
 module.exports = {
-  isCharacterIdValid,
+  getCharactersValidations,
+  deleteCharactersValidations,
+  postCharactersValidations,
+  putCharactersValidations,
 };

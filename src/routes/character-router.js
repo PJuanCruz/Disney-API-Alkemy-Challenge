@@ -1,28 +1,35 @@
 const express = require('express');
 const characterControllers = require('../controllers/character-controllers');
-const validationHandler = require('../middlewares/validation-handler');
+const authenticateToken = require('../middlewares/authenticate-token');
 const {
-  isCharacterIdValid,
+  postCharactersValidations,
+  getCharactersValidations,
+  deleteCharactersValidations,
+  putCharactersValidations,
 } = require('../middlewares/validations/character-validations');
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(characterControllers.getCharacterList)
-  .post(characterControllers.createCharacter);
+  .get([authenticateToken], characterControllers.getCharacterList)
+  .post(
+    [authenticateToken, ...postCharactersValidations],
+    characterControllers.createCharacter,
+  );
+
 router
   .route('/:characterId')
   .get(
-    [isCharacterIdValid, validationHandler],
+    [authenticateToken, ...getCharactersValidations],
     characterControllers.getCharacterDetail,
   )
   .put(
-    [isCharacterIdValid, validationHandler],
+    [authenticateToken, ...putCharactersValidations],
     characterControllers.updateCharacter,
   )
   .delete(
-    [isCharacterIdValid, validationHandler],
+    [authenticateToken, ...deleteCharactersValidations],
     characterControllers.deleteCharacterById,
   );
 

@@ -8,7 +8,12 @@ const createMovie = async ({
   rating,
   genresId,
 }) => {
-  const newMovie = await Movie.create({ imageUrl, title, releaseDate, rating });
+  const newMovie = await Movie.create({
+    imageUrl,
+    title,
+    releaseDate,
+    rating,
+  });
   await newMovie.addGenre(genresId);
   return newMovie;
 };
@@ -70,8 +75,18 @@ const updateMovie = async ({
   genresId,
 }) => {
   const movie = await Movie.findByPk(movieId);
-  await movie.update({ imageUrl, title, releaseDate, rating });
+  await movie.update({
+    imageUrl,
+    title,
+    releaseDate,
+    rating,
+  });
   await movie.setGenres(genresId);
+};
+
+const getMovieByTitle = async (title) => {
+  const movie = await Movie.findOne({ where: { title } });
+  return movie;
 };
 
 module.exports = {
@@ -80,4 +95,5 @@ module.exports = {
   getMovieDetail,
   deleteMovieById,
   updateMovie,
+  getMovieByTitle,
 };

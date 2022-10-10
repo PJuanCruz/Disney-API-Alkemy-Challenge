@@ -2,7 +2,13 @@ const BadRequest = require('../errors/bad-request');
 const movieServices = require('../services/movie-services');
 
 const createMovie = async (req, res, next) => {
-  const { imageUrl, title, releaseDate, rating, genresId } = req.body;
+  const {
+    imageUrl,
+    title,
+    releaseDate,
+    rating,
+    genresId,
+  } = req.body;
   try {
     const newMovie = await movieServices.createMovie({
       imageUrl,
@@ -37,7 +43,7 @@ const getMovieDetail = async (req, res, next) => {
   try {
     const movie = await movieServices.getMovieDetail(movieId);
     if (!movie) {
-      throw new BadRequest('El ID no corresponde a ninguna película o serie');
+      throw new BadRequest(`No existe película o serie con el Id ${movieId}`);
     }
     res.status(200).json(movie);
   } catch (error) {
@@ -50,7 +56,7 @@ const deleteMovieById = async (req, res, next) => {
   try {
     const result = await movieServices.deleteMovieById(movieId);
     if (!result) {
-      throw new BadRequest('El ID no corresponde a ninguna película o serie');
+      throw new BadRequest(`No existe película o serie con el Id ${movieId}`);
     }
     res.status(204).json(result);
   } catch (error) {
@@ -60,7 +66,13 @@ const deleteMovieById = async (req, res, next) => {
 
 const updateMovie = async (req, res, next) => {
   const { movieId } = req.params;
-  const { imageUrl, title, releaseDate, rating, genresId } = req.body;
+  const {
+    imageUrl,
+    title,
+    releaseDate,
+    rating,
+    genresId,
+  } = req.body;
   try {
     await movieServices.updateMovie({
       movieId,

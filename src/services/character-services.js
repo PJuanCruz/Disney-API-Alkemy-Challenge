@@ -79,10 +79,16 @@ const updateCharacter = async ({
   await character.setMovies(moviesId);
 };
 
+const getCharacterByName = async (name) => {
+  const character = await Character.findOne({ where: { name } });
+  return character;
+};
+
 module.exports = {
   createCharacter,
   getCharacterList,
   getCharacterDetail,
   deleteCharacterById,
   updateCharacter,
+  getCharacterByName,
 };
